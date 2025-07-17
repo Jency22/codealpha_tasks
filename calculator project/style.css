@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.calculator-container {
+  position: relative;
+  perspective: 1000px;
+}
+
+.cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #1c1c1c, #2c2c2c);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 1s ease, opacity 1s ease;
+  backface-visibility: hidden;
+}
+
+.cover.open {
+  transform: rotateX(180deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cover-text {
+  font-size: 24px;
+  color: #00ffff;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #00ffff;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffff;
+  }
+}
+
+.calculator {
+  background: #1e1e2f;
+  border-radius: 20px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+#display {
+  width: 100%;
+  height: 60px;
+  font-size: 28px;
+  text-align: right;
+  border: none;
+  background: #000000;
+  color: #00ffcc;
+  padding: 3px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 10px #00ffcc;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 18px;
+  background: #212121;
+  color: #00ffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,255,255,0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background: #00ffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+button.zero {
+  grid-column: span 2;
+}
